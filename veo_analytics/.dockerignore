@@ -1,0 +1,8 @@
+venv/
+*.duckdb
+*.duckdb.bak
+target/
+logs/
+__pycache__/
+*.pyc
+seeds/

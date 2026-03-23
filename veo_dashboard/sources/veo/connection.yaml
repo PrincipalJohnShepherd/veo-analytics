@@ -1,0 +1,4 @@
+name: veo
+type: duckdb
+options:
+  filename: ../../../veo_analytics/veo_analytics.duckdb

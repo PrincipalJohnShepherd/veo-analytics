@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: raw
+    description: "Raw CSV data loaded into DuckDB via setup_db.py"
+    tables:
+      - name: club_dim
+        description: "Clubhouse (customer) dimension"
+      - name: order_dim
+        description: "Order dimension — payment type, subscription length, channel"
+      - name: order_fct
+        description: "Order fact — one row per line item"

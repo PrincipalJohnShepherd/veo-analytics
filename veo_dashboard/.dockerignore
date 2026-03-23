@@ -1,0 +1,5 @@
+node_modules/
+build/
+.svelte-kit/
+.evidence/template/node_modules/
+.evidence/template/build/

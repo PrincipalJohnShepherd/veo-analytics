@@ -1,0 +1,7 @@
+veo_analytics:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: veo_analytics.duckdb
+      threads: 1

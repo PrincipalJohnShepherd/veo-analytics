@@ -1,0 +1,24 @@
+# dbt
+logs/
+target/
+veo_analytics/target/
+veo_analytics/logs/
+
+# DuckDB files (generated — run docker compose up to rebuild)
+*.duckdb
+*.duckdb.bak
+
+# Python
+veo_analytics/venv/
+__pycache__/
+*.pyc
+
+# Evidence.dev / Node
+veo_dashboard/node_modules/
+veo_dashboard/build/
+veo_dashboard/.svelte-kit/
+veo_dashboard/.evidence/template/node_modules/
+veo_dashboard/.evidence/template/build/
+
+# OS
+.DS_Store

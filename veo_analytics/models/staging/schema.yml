@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: stg_club_dim
+    description: "Cleaned clubhouse dimension. One row per customer (clubhouse)."
+    columns:
+      - name: clubhouse_id
+        description: "Unique customer identifier (BOM stripped)"
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_order_dim
+    description: "Cleaned order dimension. One row per order with payment and subscription metadata."
+    columns:
+      - name: order_id
+        description: "Unique order identifier (BOM stripped)"
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_order_fct
+    description: "Cleaned order fact. One row per order line item. Multiple rows per order_id for multi-product orders."
+    columns:
+      - name: order_id
+        description: "Order identifier (not unique — multi-product orders have multiple rows)"
+        tests:
+          - not_null
+      - name: clubhouse_id
+        tests:
+          - not_null

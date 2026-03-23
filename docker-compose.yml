@@ -1,0 +1,27 @@
+services:
+
+  # ── Step 1: load CSVs into DuckDB, run all models, then exit ──────────────
+  analytics:
+    build: ./veo_analytics
+    volumes:
+      - ./veo_analytics/seeds:/data:ro  # CSV source files
+      - db:/db                          # writes veo_analytics.duckdb here
+    environment:
+      DB_PATH: /db/veo_analytics.duckdb
+      DATA_DIR: /data
+
+  # ── Step 2: build Evidence.dev site and serve on port 3000 ────────────────
+  dashboard:
+    build: ./veo_dashboard
+    depends_on:
+      analytics:
+        condition: service_completed_successfully
+    volumes:
+      # Mount at /veo_analytics so connection.yaml's relative path resolves correctly:
+      # sources/veo/ + ../../../veo_analytics/veo_analytics.duckdb = /veo_analytics/veo_analytics.duckdb
+      - db:/veo_analytics:ro
+    ports:
+      - "3000:3000"
+
+volumes:
+  db:

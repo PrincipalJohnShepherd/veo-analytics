@@ -1,0 +1,42 @@
+name: 'veo_analytics'
+version: '1.0.0'
+config-version: 2
+
+profile: 'veo_analytics'
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+
+models:
+  veo_analytics:
+    staging:
+      +materialized: view
+    intermediate:
+      +materialized: view
+    marts:
+      +materialized: view
+
+seeds:
+  veo_analytics:
+    club_dim:
+      +column_types:
+        clubhouse_id: varchar
+        clubhouse_created_at: varchar
+        country_name: varchar
+    order_dim:
+      +column_types:
+        order_id: varchar
+        order_payment_type: varchar
+        order_subscription_length: varchar
+        order_is_ecommerce_order: varchar
+    order_fct:
+      +column_types:
+        order_id: varchar
+        clubhouse_id: varchar
+        product_category: varchar
+        unit_price: varchar
+        unit_quantity: varchar
+        new_MRR: varchar
+        order_created_at: varchar
+        order_action_type: varchar
